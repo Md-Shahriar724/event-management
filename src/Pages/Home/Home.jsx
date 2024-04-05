@@ -1,12 +1,10 @@
+import Header from "../../Components/Header/Header";
 
 const Home = () => {
-    const image = {
-        eve:''
-    }
+   
     return (
         <div>
-            <h1>This is home</h1>
-            <img src={image.eve} alt="" />
+            <Header></Header>
         </div>
     );
 };
