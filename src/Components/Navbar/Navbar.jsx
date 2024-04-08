@@ -1,6 +1,19 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import auth from "../../Firebase/Firebase.config";
+import { signOut } from "firebase/auth";
 
 const Navbar = () => {
+
+// const {user} =useContext(AuthContext)
+
+// // const userDtail = user.user;
+// const profilePhoto = user.photoURL
+
+// const handleSignOut = ()=>{
+//   signOut(auth)
+// }
   const navigationItem = (
     <>
       <li>
@@ -17,7 +30,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar bg-base-100 shadow-xl">
+      <div className="navbar bg-base-100 shadow-xl py-6">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -43,13 +56,25 @@ const Navbar = () => {
               {navigationItem}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <Link to={'/'} className="flex items-center  text-2xl font-semibold text-gray-900 dark:text-white">
+          <img className="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo"/>
+          Green Event   
+      </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navigationItem}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Sign In</a>
+          {/* {
+          user ? <div className="dropdown dropdown-end">
+          <img src='' tabIndex={0} role="button" className="m-1 h-8 w-8 rounded-full"/>
+          <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+            <li><a>Profile</a></li>
+            <li><a onClick={handleSignOut}>Sign Out</a></li>
+          </ul>
+        </div> : <Link className="btn" to={'/signIn'}>Sign In</Link>
+          } */}
+          
         </div>
       </div>
     </div>
