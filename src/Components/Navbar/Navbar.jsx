@@ -6,14 +6,14 @@ import { signOut } from "firebase/auth";
 
 const Navbar = () => {
 
-// const {user} =useContext(AuthContext)
+const {users} =useContext(AuthContext)
 
-// // const userDtail = user.user;
-// const profilePhoto = user.photoURL
+// const userDtail = user.user;
+console.log(users)
 
-// const handleSignOut = ()=>{
-//   signOut(auth)
-// }
+const handleSignOut = ()=>{
+  signOut(auth)
+}
   const navigationItem = (
     <>
       <li>
@@ -65,15 +65,15 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navigationItem}</ul>
         </div>
         <div className="navbar-end">
-          {/* {
-          user ? <div className="dropdown dropdown-end">
-          <img src='' tabIndex={0} role="button" className="m-1 h-8 w-8 rounded-full"/>
+          {
+          users ? <div className="dropdown dropdown-end">
+          <img src={users.photoURL} tabIndex={0} role="button" className="m-1 h-8 w-8 rounded-full"/>
           <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
             <li><a>Profile</a></li>
             <li><a onClick={handleSignOut}>Sign Out</a></li>
           </ul>
         </div> : <Link className="btn" to={'/signIn'}>Sign In</Link>
-          } */}
+          }
           
         </div>
       </div>

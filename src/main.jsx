@@ -9,6 +9,8 @@ import Contact from './Pages/Contact/Contact'
 import SignIn from './Pages/SignIn/SignIn'
 import SignUp from './Pages/SignUp/SignUp'
 import AuthProvider from './Provider/AuthProvider'
+import EventDetail from './Pages/EventDetail/EventDetail'
+import Privateroute from './Privateroute/Privateroute'
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,11 @@ const router = createBrowserRouter([
       {
         path: '/allevent',
         element: <AllEvents></AllEvents>
+      },
+      {
+        path:'/allevent/:id',
+        element: <Privateroute> <EventDetail></EventDetail></Privateroute>,
+        loader: ()=>fetch(`allevent.json`)
       },
       {
         path: '/contact',

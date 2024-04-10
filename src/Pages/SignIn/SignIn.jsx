@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
@@ -7,6 +7,10 @@ import { AuthContext } from "../../Provider/AuthProvider";
 const SignIn = () => {
 
     const {emailPassLogin} = useContext(AuthContext);
+    const location = useLocation()
+    console.log('this is sign in page ',location)
+    const navigate = useNavigate()
+
 
   const handleSubmit = (e)=>{
     e.preventDefault()
@@ -14,7 +18,10 @@ const SignIn = () => {
     const password = e.target.password.value;
 
     emailPassLogin(email, password)
-    .then(res => console.log(res.user))
+    .then(res => {
+      console.log(res.user)
+      navigate(location?.state ? location.state : '/' );
+    })
     .catch(err => console.log(err.message))
 
 
